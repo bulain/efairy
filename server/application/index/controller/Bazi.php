@@ -5,7 +5,6 @@ use app\index\service\Stars;
 use app\index\service\MangPai;
 class Bazi
 {
-   
 
    function api($sex,$time){
         $time = strtotime($time);
@@ -43,25 +42,25 @@ class Bazi
         $info = $p->GetInfo(0, 1989, 2, 4, 2, 59, 0); 
         dump($info);
     }
-    function test22(){
+    function test8(){
         $p = new MangPai();
-        $p->zwz = true; //分早晚子时
+        //$p->zwz = true; //分早晚子时
         $info = $p->GetInfo(0, 1989, 2, 4, 2, 30, 0); 
         dump($info);
     }
 
     function test3(){
         $p = new Mangpai();
-        $p->zwz = true; //分早晚子时
+        //$p->zwz = true; //分早晚子时
         $info = $p->GetInfo(1, 2017, 12, 21, 13,30, 0); 
         dump($info);
     }
 
     function test4(){
         $p = new MangPai();
-        $p->zwz = true; //分早晚子时
+        //$p->zwz = true; //分早晚子时
         $info = $p->GetInfo(0, 1989, 2, 4, 2, 30, 0); 
-        //dump($info);
+        dump($info);
     }
 
     function test5(){
@@ -77,7 +76,7 @@ class Bazi
         //1990年5月27，下午，6点左右出生,排行老大，独子
         $p = new MangPai();
         $info = $p->GetInfo(1, 1990, 5, 27, 18,10, 0); 
-
+        dump($info);
     }
 
     function test7(){

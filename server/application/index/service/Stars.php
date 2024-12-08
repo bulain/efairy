@@ -308,9 +308,9 @@ class StarsCheck{
 			}
 		}elseif(\in_array($dz[1],[5,9,1])){//巳酉丑
 			if(in_array(1,$tg) and in_array(6,$tg)){
-				$xiu = \array_key($tg,6,false);
+				$xiu = array_keys($tg,6,false);
 				unset($xiu[0]);
-				$xiu = array_merge($xiu,array_key($tg,7,false));
+				$xiu = array_merge($xiu,array_keys($tg,7,false));
 			}
 		}elseif(\in_array($dz[1],[11,3,7])){//亥卯未
 			if(in_array(3,$tg) && in_array(8,$tg)){
@@ -1228,10 +1228,9 @@ class StarsCheck{
 
 class Stars{
     /**星煞的序号及名字
-     * @var $star_name array
+     * @var array $starname 
      */
-
-    public $star_name = [
+	public $starname = [
 		['kongWang','空亡'],
     	['tianYi','天乙'],
         ['taiJi','太极'],
@@ -1275,17 +1274,16 @@ class Stars{
         ['taoHua','桃花'],
         ['ganLu','干禄'],
         ['shiLing','十灵'],//甲申、乙酉、丙子、丁丑、戊午、己丑、庚寅、辛卯、壬午、癸未日
-		['shiE','十恶大败'],
+		['shiE','十恶大败']
     ];
 
 	/**
-	 * 
+	 *  @param object $info 对象
 	 */
-
     private function getStars($info){
 		$starChecker = new StarsCheck();
     	$star = [[],[],[],[]];//年,月,日,时
-    	foreach($this->star_name as $key=>$value){
+    	foreach($this->starname as $key=>$value){
 			call_user_func_array( [$starChecker,$value[0]] , [$info,&$star,$key,$value] );
 		}
 		$info['star'] = $star;

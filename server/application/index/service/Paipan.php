@@ -120,7 +120,7 @@ class Paipan{
 	/**
 	 * 地球在繞日运行時會因受到其他星球之影響而產生攝動(perturbation)
 	 * @param float $jd 
-	 * @return number 返回某时刻(儒略日历)的攝動偏移量
+	 * @return float 返回某时刻(儒略日历)的攝動偏移量
 	 */
 	private function Perturbation($jd) {
 	    $t = ($jd - 2451545) / 36525;
@@ -136,7 +136,7 @@ class Paipan{
      * 求∆t
      * @param int $yy 年份
      * @param int $mm 月份
-     * @return number
+     * @return float
      */
 	private function DeltaT($yy, $mm) {
 
@@ -224,7 +224,7 @@ class Paipan{
 	 * 获取指定年的春分开始的24节气,另外多取2个确保覆盖完一个公历年
 	 * 大致原理是:先用此方法得到理论值,再用摄动值(Perturbation)和固定参数DeltaT做调整
 	 * @param int $yy
-	 * @return boolean
+	 * @return array
 	 */
 	private function MeanJQJD($yy) {
 	    if(! $jd = $this->VE($yy)){ //该年的春分點
@@ -360,7 +360,7 @@ class Paipan{
 	/**
 	 * 求出實際新月點
 	 * 以2000年初的第一個均值新月點為0點求出的均值新月點和其朔望月之序數 k 代入此副程式來求算實際新月點
-	 * @param unknown $k
+	 * @param float $k
 	 * @return number
 	 */
 	private function TrueNewMoon($k) {

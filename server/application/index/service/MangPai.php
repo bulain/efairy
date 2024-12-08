@@ -5,7 +5,7 @@ class Mangpai{
     private $pan;
     private $des=[];//所有结论描述
     private $mark = [];
-    function __construct(){
+    public function __construct(){
         $this->pan = new Paipan;
     }
     /**
@@ -184,8 +184,8 @@ class Mangpai{
               //  }else{
               //      $this->des[]='你在家中姐妹(不含兄弟)排行第'.($pai/2+1);
               //  }
-                
-            }
+            //    
+            //}
         }
 
 
@@ -247,7 +247,7 @@ class Mangpai{
 	 * @param int $ss 秒数(0-59)
 	 * @return array
 	 */
-    function getInfo($gd, $yy, $mm, $dd, $hh, $mt=0, $ss=0){
+    public function getInfo($gd, $yy, $mm, $dd, $hh, $mt=0, $ss=0){
         $info = $this->pan->getInfo($gd, $yy, $mm, $dd, $hh, $mt, $ss);
         $this->wuXingPingHeng($info);
         $this->aboutCunYinYang($info);
@@ -255,10 +255,6 @@ class Mangpai{
         $this->getBronNum($info['tg'],$info['dz'],$info['sex']);
         //dump($this->des);
         return $this->des;
-
     }
-
-    
-
 
 }
