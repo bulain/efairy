@@ -10,11 +10,10 @@ RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list && \
     rm -f /etc/apache2/sites-enabled/*
 COPY docker /etc/apache2/sites-enabled/
 COPY server /var/www/
-RUN useradd -m debian && \
-    chown -R debian  /var/www/ && \
-    sudo -u debian composer config repo.packagist composer https://mirrors.aliyun.com/composer/ && \
-    sudo -u debian composer update && \
-    sudo -u debian composer install
+RUN chown -R www-data  /var/www/ && \
+    sudo -u www-data composer config repo.packagist composer https://mirrors.aliyun.com/composer/ && \
+    sudo -u www-data composer update && \
+    sudo -u www-data composer install
 ENV APACHE_RUN_DIR=/var/run/apache2 \
    APACHE_RUN_USER=www-data \
    APACHE_RUN_GROUP=www-data \
